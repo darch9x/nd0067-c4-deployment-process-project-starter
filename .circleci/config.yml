@@ -74,5 +74,6 @@ jobs:
 workflows:
   udagram:
     jobs:
-      - build
+      - build-fe
+      - build-be
       - deploy
