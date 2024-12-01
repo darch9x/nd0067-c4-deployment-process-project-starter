@@ -76,4 +76,15 @@ workflows:
     jobs:
       - build-fe
       - build-be
-      - deploy
+      - hold:
+          filters:
+            branches:
+              only:
+                - master
+          type: approval
+          requires:
+            - build-fe
+            - build-be
+      - deploy:
+          requires:
+            - hold
